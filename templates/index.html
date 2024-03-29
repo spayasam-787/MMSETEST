@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MMSE</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/styles.css">
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MMSE Test</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="text-center mt-2">Mini Mental State Examination (MMSE)</h1>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="text-center mt-2">
+            <button id="start-btn" class="btn btn-primary">Start Test</button>
+        </div>
+    </div>
+    <hr>
+    <div class="container">
+        <div id="simple-img" class="no-display">
+            <img src ="" class="img-fluid">
+        </div>
+        <div id="choose-words" class="no-display">
+            <h2 id="choose-words-inst"></h2>
+            <div id="click-btn">
+            </div>
+        </div>
+        <div id="clock-container" class="no-display">
+            <h2 id="clock-inst"></h2>
+            <div class="row align-items-end">
+                <div class="col-md-6">
+                    <div class="clock text-center">
+                        <div class="hour-hand" id="hourHand"></div>
+                        <div class="minute-hand" id="minuteHand"></div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="controls">
+                        <div class="control-label font-weight-bold">Set Clock Hands:</div>
+                        <div class="form-group">
+                            <label for="hourAngle">Hour Hand Angle: <span id="hourValue">30</span> degrees</label>
+                            <input type="range" class="form-control" id="hourAngle" min="0" max="360" value="30" step="30">
+                        </div>
+                        <div class="form-group">
+                            <label for="minuteAngle">Minute Hand Angle: <span id="minuteValue">30</span> degrees</label>
+                            <input type="range" class="form-control" id="minuteAngle" min="0" max="360" value="0" step="30">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- button to submit -->
+            <div class="text-center mt-4">
+                <button id="clock-btn" class="btn btn-primary">Submit</button>
+            </div>
+        </div> 
+        <div id="draw-container" class="no-display">
+            <div class="row align-items-center">
+                <div class="col-md-5">
+                    <img src="static/image.png" class="img-fluid" alt="Responsive image">
+                </div>
+                <div class="col-md-7">
+                    <div id="canvas-container"></div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <button id="clear-canvas-btn" class="btn btn-secondary">Clear</button>
+                <button id="submit-drawing-btn" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+        <div id="end-container" class="no-display">
+            <h2 id="end-inst" class="text-center mt-5 text-danger">MMSE TEST END</h2>
+            <div class="text-center mt-4">
+                <p id="end-btn" class="list-group-item">Please wait for few seconds for report to get processed.</p>
+                <!-- button when clicked will open the html in new tab, it should have bootstrap spinner-->
+                <button id="view-report-btn" class="btn btn-primary mt-4" data-filename = "">
+                    <span class="spinner-border text-light mr-2" role="status"></span>
+                    View Report</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://unpkg.com/konva@9.3.0/konva.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="static/script.js"></script>
+</body>
+</html>

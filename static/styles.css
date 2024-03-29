@@ -1,0 +1,114 @@
+.keys-display-selected{
+  height: 100px;
+
+}
+
+.keyboard .col{
+  font-size: clamp(1rem, 2rem, 1.5rem);
+  background-color: #ddd;
+  max-width: 75px;
+  text-align: center;
+  color: #333;
+  border: 2px solid #2b2b2b;
+  cursor: pointer;
+  outline: none;
+  padding: 1em;
+  margin: 5px;
+  text-transform: uppercase;
+  transition: all 0.2s ease-in-out;
+  border-radius: 0.5rem;
+}
+
+.keyboard button:hover {
+  background-color: #ccc;
+}
+
+.keyboard button:focus {
+  background-color: #eef;
+}
+
+.keyboard button:active {
+  transform: translateY(-0.1rem) scale(0.95);
+}
+
+.no-display {
+  display: none!important;
+}
+
+#simple-img{
+margin-top: 50px;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+#simple-img img{
+border: 2px solid #2b2b2b;
+width: 500px;
+}
+
+#choose-words{
+  margin-top: 50px;
+}
+
+#choose-words h2{
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#choose-words #click-btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+hr{
+  /* thickness and color for hr tag*/
+  height: 2px;
+  background-color: #2b2b2b;
+}
+
+.clock {
+  width: 200px;
+  height: 200px;
+  border: 2px solid #333;
+  border-radius: 50%;
+  position: relative;
+}
+
+.hour-hand,
+.minute-hand {
+  position: absolute;
+  transform-origin: bottom center;
+  transition: transform 0.3s ease-in-out;
+  left: 50%;
+  top: 50%;
+}
+
+.hour-hand {
+  width: 4px;
+  height: 50px;
+  background-color: #333;
+}
+
+.minute-hand {
+  width: 2px;
+  height: 75px;
+  background-color: #333;
+}
+
+.controls {
+  margin-top: 20px;
+}
+
+.control-label {
+  font-weight: bold;
+}
+
+input[type="range"] {
+  width: 100%;
+}
+
+#canvas-container{
+  border: 2px solid #2b2b2b;
+}

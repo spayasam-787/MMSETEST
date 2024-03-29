@@ -1,0 +1,9 @@
+SpeechRecognition
+pyaudio
+simpleaudio
+pydub
+flask
+gTTS
+requests
+openai==0.28
+vosk

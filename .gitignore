@@ -1,0 +1,10 @@
+KEYS.py
+venv
+__pycache__
+model
+output.mp3
+results.json
+reports
+report.html
+config.json
+folders
