@@ -1,4 +1,6 @@
-<div align="center">(optional) Project photo</div>
+<div align="center">
+<img src="IMG_0200.png" width="200" height="200">
+</div>
 <h1 align="center">MMSE TESTING</h1>
 <p align="center"><strong>Alzhiemers Disease Progression Testing With AI</strong>
 <br/>
