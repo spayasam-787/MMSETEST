@@ -1,5 +1,6 @@
 let currentQuestionIndex = 0;
 let questions = [];
+const nameEle = document.getElementById("name");
 const simpleImg = document.getElementById("simple-img");
 const chooseWords = document.getElementById("choose-words");
 const clockContainer = document.getElementById("clock-container");
@@ -39,10 +40,12 @@ updateClockHands();
 
 document.getElementById("start-btn").onclick = () => {
     // change start-btn class from btn-primary to btn-warning and change text to "Restart"
+    const name = document.getElementById("name").value;
     if (document.getElementById("start-btn").classList.contains("btn-primary")) {
         document.getElementById("start-btn").classList.remove("btn-primary");
         document.getElementById("start-btn").classList.add("btn-warning");
         document.getElementById("start-btn").innerHTML = "Restart";
+        document.getElementById("name").outerHTML  = `<h3> <b id='name'> ${document.getElementById("name").value} </b> </h3>`
     }
     // set simple-img, choose-words, clock-container, draw-container classes to no-display if they don't have it already
     if (!simpleImg.classList.contains("no-display")) {
@@ -66,7 +69,14 @@ document.getElementById("start-btn").onclick = () => {
         location.reload();
     }
     else{
-        fetch("/start")
+        fetch("/start",
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ name: name }),
+        })
         .then((response) => response.json())
         .then((data) => {
             console.log(data);

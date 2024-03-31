@@ -27,7 +27,7 @@ def save_data_to_file():
     if not os.path.exists('reports'):
         os.mkdir('reports')
     
-    os.mkdir('reports/' + folder_name)
+    os.mkdir('reports/' + data['name'] + '_' + folder_name)
 
     # step2: save the data in that folder
     results = {}
@@ -102,6 +102,11 @@ def start():
     words = ()
     chosen_word = ""
     clock = {}
+    if request.method == 'POST':
+        r = request.get_json()
+        name = r['name']
+        data['name'] = name
+
 
     if config['enable_group1']:
         instruction = "I will ask you some questions, and give you some problems to solve. Please answer them to the best of your ability."

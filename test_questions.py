@@ -241,7 +241,7 @@ def process_report(report):
             report[key]['explanation'] = explanation
             total_score += score
 
-    report['total_score'] = total_score
+    report['total_score'] = total_score + report['drawing']['score']
 
 def process_mmse_report(results):
     process_report(next(iter(results.values())))
@@ -269,7 +269,9 @@ def generate_html(data):
     
     for date, sections in data.items():
         for section, details in sections.items():
-            if section == "drawing":
+            if section == "name":
+                html_content += f'<div class="border-b pb-4"><h2 class="text-xl font-semibold text-gray-700">Name: {details}</h2></div>'
+            elif section == "drawing":
                 html_content += f'<div class="border-b pb-4"><h2 class="text-xl font-semibold text-gray-700">{section}</h2>'
                 html_content += f'<p><strong>Score:</strong> {details["score"]}</p>'
                 html_content += f'<p><strong>Description:</strong> {details["description"]}</p>'
@@ -297,101 +299,114 @@ def generate_html(data):
     return html_content
 
 j = {
-    "2024-01-29 00:37:57.452163": {
+    "2024-03-29 17:12:44.192985": {
+        "name": "shiva",
         "Year": {
             "question": "What is the current year?",
             "spoken_text": "2024",
             "correct": 2024,
-            "score": 1
+            "score": 1,
+            "explanation": "The response '2024' matches the correct answer '2024', therefore it is scored as correct."
         },
         "Month": {
             "question": "What is the current month?",
-            "spoken_text": "January.",
-            "correct": "January",
-            "score": 1
+            "spoken_text": "March.",
+            "correct": "March",
+            "score": 1,
+            "explanation": "The response 'march.' matches the correct answer 'march', thus a score of 1 is awarded."
         },
         "Day": {
             "question": "What is the date today?",
             "spoken_text": "29th",
             "correct": 29,
-            "score": 1
+            "score": 1,
+            "explanation": "The response '29th' is considered close enough to the correct answer '29', acknowledging potential variations in speech to text conversion and the format in which dates or numbers might be presented. Thus, a score of 1 is assigned."
         },
         "DayOfWeek": {
             "question": "What is the current day of the week?",
-            "spoken_text": "Monday.",
-            "correct": "Monday",
-            "score": 1
+            "spoken_text": "Friday.",
+            "correct": "Friday",
+            "score": 1,
+            "explanation": "The response 'friday.' matches the correct answer 'friday' exactly. Given the instruction to be liberal in scoring and to consider close matches as correct, the response is scored 1 for being correct."
         },
         "Season": {
             "question": "what is the current season?",
-            "spoken_text": "winter",
-            "correct": "Winter",
-            "score": 0
+            "spoken_text": "spring",
+            "correct": "Spring",
+            "score": 1,
+            "explanation": "The response 'spring' matches the correct answer 'spring' exactly, earning a score of 1."
         },
         "three_things": {
-            "spoken_text": "phone, sweater, lake.",
-            "correct": "phone sweater lake",
-            "score": 1
+            "spoken_text": "Butterfly, Boot and Tower",
+            "correct": "butterfly boot tower",
+            "score": 1,
+            "explanation": "The response 'butterfly, boot and tower' closely matches the correct answer 'butterfly boot tower'. All three items required are present in the response."
         },
         "reverse_word": {
-            "spoken_text": "G.O.D.",
-            "correct": "GOD",
-            "score": 1
+            "spoken_text": "REWOLF",
+            "correct": "REWOLF",
+            "score": 1,
+            "explanation": "The response 'rewolf' exactly matches the correct answer 'rewolf', and given the leniency in scoring for slight discrepancies due to voice recording transcription errors, the answer is scored as correct."
         },
         "three_things_repeat": {
-            "spoken_text": "phone, sweater, leg.",
-            "correct": "phone sweater lake",
-            "score": 1
+            "spoken_text": "butterfly, booth, tower.",
+            "correct": "butterfly boot tower",
+            "score": 1,
+            "explanation": "The response 'butterfly, booth, tower.' is close enough to the correct answer 'butterfly boot tower'. Despite the slight difference in 'booth' vs. 'boot', all three key elements are present, and considering the liberal scoring guideline and potential speech-to-text errors, the response is scored as a 1."
         },
         "image1": {
-            "spoken_text": "airplane.",
+            "spoken_text": "It's an aeroplane.",
             "correct": "airplane",
-            "score": 1
+            "score": 1,
+            "explanation": "The provided answer 'it's an aeroplane.' closely matches the correct answer 'airplane', acknowledging variations in spelling and additional words. Therefore, it is scored as correct."
         },
         "image2": {
-            "spoken_text": "car",
-            "correct": "car",
-            "score": 1
+            "spoken_text": "It's a wristwatch",
+            "correct": "wrist watch",
+            "score": 1,
+            "explanation": "The response 'it's a wristwatch' closely matches the correct answer 'wrist watch' and contains the correct word, so it is scored as 1."
         },
         "phrase": {
-            "spoken_text": "No ifs, ands, or buts.",
+            "spoken_text": "No ifs, ands or buts.",
             "correct": "No ifs, ands, or buts",
-            "score": 1
+            "score": 1,
+            "explanation": "The response 'no ifs, ands or buts.' closely matches the correct answer 'no ifs, ands, or buts', containing all necessary words ('if'/'ifs', 'and'/'ands', 'but'/'buts'). The omission of punctuation in the response is considered acceptable for this evaluation."
         },
         "words": {
-            "chosen_word": "happy",
-            "correct": "happy",
-            "score": 0
+            "chosen_word": "beautiful",
+            "correct": "beautiful",
+            "score": 1,
+            "explanation": "The chosen word 'beautiful' exactly matches the correct word 'beautiful', hence it is scored as 1, indicating a perfect match."
         },
         "clock": {
             "time": {
-                "hour": 11,
-                "minute": 25
+                "hour": 5,
+                "minute": 40
             },
             "correct": {
-                "hour": 11,
-                "minute": 25
+                "hour": 5,
+                "minute": 40
             },
-            "score": 1
+            "score": 1,
+            "explanation": "The provided time '5:40' matches exactly with the correct time '5:40', hence a full score is awarded."
         },
         "sentence": {
-            "spoken_text": "I like computer programming.",
-            "score": 1
+            "spoken_text": "I like programming",
+            "score": 1,
+            "explanation": "The sentence 'i like programming' contains at least one noun ('programming') and one verb ('like'), hence it scores 1."
         },
         "drawing": {
             "score": 1,
             "description": "all 10 sides present and its overlapping on one side"
         },
-        "total_score": 12
+        "total_score": 15
     }
 }
-
 # h = generate_html(j)
 
 # with open("report.html", "w") as f:
 #     f.write(h)
 #     f.close()
-
 
 
 
